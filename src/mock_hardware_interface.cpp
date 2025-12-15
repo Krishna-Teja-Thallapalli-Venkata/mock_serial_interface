@@ -123,6 +123,32 @@ hardware_interface::return_type MockHardwareInterface::write(
   return hardware_interface::return_type::OK;
 }
 
+std::vector<hardware_interface::StateInterface> MockHardwareInterface::export_state_interfaces()
+{
+  std::vector<hardware_interface::StateInterface> state_interfaces;
+  for (uint i = 0; i < info_.joints.size(); i++)
+  {
+    state_interfaces.emplace_back(hardware_interface::StateInterface(
+      info_.joints[i].name, hardware_interface::HW_IF_POSITION, &hw_states_position_));
+    state_interfaces.emplace_back(hardware_interface::StateInterface(
+      info_.joints[i].name, hardware_interface::HW_IF_VELOCITY, &hw_states_velocity_));
+  }
+
+  return state_interfaces;
+}
+
+std::vector<hardware_interface::CommandInterface> MockHardwareInterface::export_command_interfaces()
+{
+  std::vector<hardware_interface::CommandInterface> command_interfaces;
+  for (uint i = 0; i < info_.joints.size(); i++)
+  {
+    command_interfaces.emplace_back(hardware_interface::CommandInterface(
+      info_.joints[i].name, hardware_interface::HW_IF_POSITION, &hw_commands_position_));
+  }
+
+  return command_interfaces;
+}
+
 } // namespace mock_serial_interface
 
 #include "pluginlib/class_list_macros.hpp"
