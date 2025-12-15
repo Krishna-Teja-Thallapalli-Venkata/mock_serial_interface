@@ -1,0 +1,9 @@
+<library path="mock_serial_interface">
+  <class name="mock_serial_interface/MockHardwareInterface"
+         type="mock_serial_interface::MockHardwareInterface"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      A mock serial hardware interface.
+    </description>
+  </class>
+</library>
