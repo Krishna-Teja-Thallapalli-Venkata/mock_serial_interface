@@ -60,13 +60,17 @@ def generate_launch_description():
         )
     )
 
+    rviz_config_file = PathJoinSubstitution(
+        [FindPackageShare("mock_serial_interface"), "rviz", "mock_serial.rviz"]
+    )
+
     # Rviz
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",
         name="rviz2",
         output="log",
-        # arguments=["-d", rviz_config_file], # Could add rviz config
+        arguments=["-d", rviz_config_file],
     )
 
     return LaunchDescription(
