@@ -15,10 +15,6 @@ A ROS 2 package implementing a `ros2_control` hardware interface with a simulate
     cd ~/ros2_ws/src
     git clone <this_repo>
     ```
-    *Note: If you are using the `robotics_assignment` folder as your workspace root:*
-    ```bash
-    cd ~/robotics_assignment
-    ```
 
 2.  Install dependencies:
     ```bash
